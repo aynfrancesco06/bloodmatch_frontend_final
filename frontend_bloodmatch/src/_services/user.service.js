@@ -1,8 +1,7 @@
 import instance from '../_helpers/axios'
 import jwt_decode from "jwt-decode";
-import axios from 'axios'
 
-const url = "http://localhost:8080/api/v1";
+
 
 //local storage not yet working 
 
@@ -140,7 +139,7 @@ const findOneUser = async () => {
 
      if (res.status === 200) {
         return {
-          type: "success" ,
+          type: "success" , 
           users: res.data.data
         } 
       } 

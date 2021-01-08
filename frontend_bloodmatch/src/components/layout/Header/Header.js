@@ -1,14 +1,26 @@
-import React from "react";
+import React ,  {useEffect , useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { userConstants } from "../../../_constants";
+import {userActions} from '../../../_actions'
+import jwt_decode from "jwt-decode";
 
 const Header = () => {
+
+
   const auth = useSelector((state) => state.auth);
   const { isAuthenticated, user } = auth;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if (isAuthenticated === true) {
+      dispatch(userActions.findOneUserAction())
+    }
+
+  }, [isAuthenticated])
 
   const handleLogout = () => {
     dispatch({
